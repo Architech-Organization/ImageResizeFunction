@@ -1,12 +1,14 @@
 name: Deploy DotNet project to function app with a Linux environment
 
 on:
-  [push]
+  push:
+    branches: # array of glob patterns matching against refs/heads. Optional; defaults to all
+      - dev # triggers on pushes that contain changes in develop
 
 env:
   AZURE_FUNCTIONAPP_NAME: function-app-adp-v2-dev  # set this to your application's name
   AZURE_FUNCTIONAPP_PACKAGE_PATH: './ImageResizeFunction'    # set this to the path to your web app project, defaults to the repository root
-  DOTNET_VERSION: '2.2.402'              # set this to the dotnet version to use
+  DOTNET_VERSION: '2.1.5'              # set this to the dotnet version to use
 
 jobs:
   build-and-deploy:
